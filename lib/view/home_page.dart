@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
       body: FutureBuilder(
         future:controller.getDate(categoryList[currentIndex]) ,
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-          Articles data=snapshot.data;
+          Articles? data=snapshot.data;
           if(snapshot.hasData) {
             return ListView.builder(itemBuilder: (context, index) {
               return Card(
@@ -67,13 +67,13 @@ class _HomePageState extends State<HomePage> {
                     Container(
                       width: double.infinity,
                       height: MediaQuery.of(context).size.height *0.3,
-                      child: Image.network(data.articles?.elementAt(index).
+                      child: Image.network(data?.articles?.elementAt(index).
                       urlToImage.toString()?? " ",fit: BoxFit.fill,),
                     ),
-                    Text(data.articles?.elementAt(index).title ??" ",
+                    Text(data?.articles?.elementAt(index).title ??" ",
                       style: TextStyle(fontSize: 15,color: Colors.grey[800],),
                       textDirection: TextDirection.rtl,),
-                    Text(data.articles?.elementAt(index).description ??" ",
+                    Text(data?.articles?.elementAt(index).description ??" ",
                       style: TextStyle(fontSize: 15,color: Colors.grey,),
                       textDirection: TextDirection.rtl,)
 
@@ -81,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               );
-            }, itemCount: data.articles?.length?? 0,);
+            }, itemCount: data?.articles?.length?? 0,);
           }else{
             return Center(child: CircularProgressIndicator());
           }
