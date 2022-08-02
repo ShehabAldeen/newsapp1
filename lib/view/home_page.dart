@@ -67,8 +67,11 @@ class _HomePageState extends State<HomePage> {
                     Container(
                       width: double.infinity,
                       height: MediaQuery.of(context).size.height *0.3,
-                      child: Image.network(data?.articles?.elementAt(index).
-                      urlToImage.toString()?? " ",fit: BoxFit.fill,),
+                      child: data?.articles?.elementAt(index).
+                      urlToImage==null?
+                          Center(child: CircularProgressIndicator(),):
+                      Image.network(data?.articles?.elementAt(index).
+                      urlToImage??'',fit: BoxFit.fill,),
                     ),
                     Text(data?.articles?.elementAt(index).title ??" ",
                       style: TextStyle(fontSize: 15,color: Colors.grey[800],),

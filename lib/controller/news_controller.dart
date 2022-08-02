@@ -6,6 +6,7 @@ import 'package:newsapi/model/news_model.dart';
 
 class NewsController extends GetxController{
   getDate(String category)async{
+
    final url= Uri.parse('https://newsapi.org/v2/top-headlines?country=eg&category=${category}&'
        'apiKey=eeb00b620a254626900df08098e73d29');
     http.Response respone= await http.get(url);
